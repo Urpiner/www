@@ -1,0 +1,32 @@
+.clanok {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+
+    margin-bottom: 1.5rem;
+}
+
+.clanok img {
+    width: 100%;
+}
+
+.clanok-telo {
+    padding: 1rem;
+}
+
+.clanok-telo h2 {
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    font-size: 1.8rem;
+    line-height: 1.1;
+
+}
+
+.clanok-telo p {
+    margin-bottom: 1rem;
+}
+
+
+
+
+
