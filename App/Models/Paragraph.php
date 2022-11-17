@@ -4,17 +4,12 @@ namespace App\Models;
 
 use App\Core\Model;
 
-class Post extends Model
+class Paragraph extends Model
 {
-    //musia byt protected aby isiel framework
     protected $id;
+    protected $posts_id;
     protected $text;
-    protected $img;
     protected $title;
-
-    public function getParagraphs() {
-        return Paragraph::getAll('posts_id = ?', [$this->getId()]);
-    }
 
     /**
      * @return mixed
@@ -35,6 +30,22 @@ class Post extends Model
     /**
      * @return mixed
      */
+    public function getPostsId()
+    {
+        return $this->posts_id;
+    }
+
+    /**
+     * @param mixed $posts_id
+     */
+    public function setPostsId($posts_id): void
+    {
+        $this->posts_id = $posts_id;
+    }
+
+    /**
+     * @return mixed
+     */
     public function getText()
     {
         return $this->text;
@@ -46,22 +57,6 @@ class Post extends Model
     public function setText($text): void
     {
         $this->text = $text;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getImg()
-    {
-        return $this->img;
-    }
-
-    /**
-     * @param mixed $img
-     */
-    public function setImg($img): void
-    {
-        $this->img = $img;
     }
 
     /**

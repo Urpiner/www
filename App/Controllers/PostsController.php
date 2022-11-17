@@ -105,4 +105,11 @@ class PostsController extends AControllerBase
         return $this->html($postToEdit, viewName: 'create.form');
     }
 
+    public function content() {
+        $id = $this->request()->getValue('id');
+        $post = Post::getOne($id);
+
+        return $this->html($post, viewName: 'content');
+    }
+
 }
