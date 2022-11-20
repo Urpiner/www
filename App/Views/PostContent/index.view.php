@@ -16,5 +16,17 @@
             <p><?php echo $paragraph->getText() ?></p>
         </div>
     </div>
+    <div class="row py-3">
+        <div class="col-lg-12">
+            <a class="btn btn-warning" href="?c=postContent&a=editParagraph&id=<?php echo $paragraph->getId() ?>">Uprav paragraf →</a>
+            <a class="btn btn-danger" href="?c=postContent&a=deleteParagraph&id=<?php echo $paragraph->getId() ?>">Zmaz paragraf →</a>
+        </div>
+    </div>
 <?php } ?>
+
+<div class="row py-3">
+    <div class="col-lg-12">
+        <a class="btn btn-success" href="?c=postContent&a=createParagraph&post_id=<?php echo $data->getId() ?>">Pridaj paragraf →</a>
+    </div>
+</div>
 

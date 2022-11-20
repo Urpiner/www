@@ -107,9 +107,11 @@ class PostsController extends AControllerBase
 
     public function content() {
         $id = $this->request()->getValue('id');
-        $post = Post::getOne($id);
+        ///$post = Post::getOne($id);
 
-        return $this->html($post, viewName: 'content');
+        ///return $this->html($post, viewName: 'content');
+        $url = "?c=postContent&id=" . $id;
+        return $this->redirect($url);
     }
 
 }
