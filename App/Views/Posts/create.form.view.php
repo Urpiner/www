@@ -1,4 +1,4 @@
-<!-- v Posts/index.view.php mam okomentovane co v tom href je -->
+
 <form method="post" action="?c=posts&a=store" enctype="multipart/form-data">
 
 
@@ -14,12 +14,12 @@
 
     <div>
         <label for="title">Title:</label><br>
-        <input type="text" id="title" value="<?php echo $data->getTitle() ?>"><br>
+        <input type="text" id="title" name="title" value="<?php echo $data->getTitle() ?>"><br>
     </div>
 
     <div>
         <label for="text">Text:</label><br>
-        <input type="text" id="text" value="<?php echo $data->getText() ?>"><br>
+        <input type="text" id="text" name="text" value="<?php echo $data->getText() ?>"><br>
     </div>
 
     <div>

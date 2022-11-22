@@ -6,6 +6,15 @@
     width: 50px;
 }
 
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+footer {
+    margin-top: auto;
+}
+
 .error {
     color: red;
     padding: 5px;
@@ -16,3 +25,4 @@
     padding: 5px;
     color: red;
 }
+

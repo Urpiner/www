@@ -9,6 +9,18 @@ use App\Models\Post;
 
 class PostContentController extends AControllerBase
 {
+    public function authorize($action)
+    {
+        switch ($action) {
+            case "deleteParagraph":
+            case "storeParagraph":
+            case "createParagraph":
+            case "editParagraph":
+                return $this->app->getAuth()->isLogged();
+        }
+        return true;
+    }
+
 
     public function index(): Response
     {
@@ -43,8 +55,18 @@ class PostContentController extends AControllerBase
             $paragraph->setPostsId($post_id);
         }
 
-        $paragraph->setText($this->request()->getValue('text'));
-        $paragraph->setTitle($this->request()->getValue('title'));
+        $inputText = $this->request()->getValue('text');
+        $inputTitle = $this->request()->getValue('title');
+        if ($inputText == null || strlen($inputText) == 0) {
+            $url = "?c=postContent&id=" . $post_id;
+            return $this->redirect($url);
+        }
+        if ($inputTitle != null && strlen($inputTitle) == 0) {
+            $url = "?c=postContent&id=" . $post_id;
+            return $this->redirect($url);
+        }
+        $paragraph->setText($inputText);
+        $paragraph->setTitle($inputTitle);
 
         $paragraph->save();
 

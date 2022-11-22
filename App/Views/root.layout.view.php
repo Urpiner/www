@@ -32,7 +32,7 @@
         <a class="navbar-brand" href="?c=home">NezavisleNoviny.sk</a>
         <ul class="navbar-nav me-auto">
             <li class="nav-item">
-                <li class="nav-item"><a class="nav-link" href="#">Domov</a></li>
+                <li class="nav-item"><a class="nav-link" href="?c=posts">Domov</a></li>
                 <li class="nav-item"><a class="nav-link" href="#">O nás</a></li>
                 <li class="nav-item"><a class="nav-link" href="#">Kontakt</a></li>
             </li>
@@ -60,20 +60,6 @@
     </div>
 </div>
 
-
-<!-- pagination + footer -->
-<nav aria-label="Pagination">
-    <hr class="my-0" />
-    <ul class="pagination justify-content-center my-4">
-        <li class="page-item disabled"><a class="page-link" href="#" tabindex="-1" aria-disabled="true">Newer</a></li>
-        <li class="page-item active" aria-current="page"><a class="page-link" href="#!">1</a></li>
-        <li class="page-item"><a class="page-link" href="#!">2</a></li>
-        <li class="page-item"><a class="page-link" href="#!">3</a></li>
-        <li class="page-item disabled"><a class="page-link" href="#!">...</a></li>
-        <li class="page-item"><a class="page-link" href="#!">15</a></li>
-        <li class="page-item"><a class="page-link" href="#!">Older</a></li>
-    </ul>
-</nav>
 <footer class="py-5 bg-dark">
     <div class="container"><p class="m-0 text-center text-white">Nezávislé Noviny Copyright © 2022</p></div>
 </footer>

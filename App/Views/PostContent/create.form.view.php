@@ -1,7 +1,7 @@
 <?php /** @var \App\Models\Paragraph $data */ ?>
 
 
-<!-- v Posts/index.view.php mam okomentovane co v tom href je -->
+
 <!-- ak este nebol paragraf ulozeny v db, tak nebude mat nastavene id (v tabulke je autoincrement id)-->
 <form method="post" action="?c=postContent&a=storeParagraph&id=<?php echo $data->getId() ?>&post_id=<?php echo $data->getPostsId() ?>" enctype="multipart/form-data">
 
@@ -13,12 +13,12 @@
 
     <div>
         <label for="title">Title:</label><br>
-        <input type="text" id="title" value="<?php echo $data->getTitle() ?>"><br>
+        <input type="text" id="title" name="title" value="<?php echo $data->getTitle() ?>"><br>
     </div>
 
     <div>
         <label for="text">Text:</label><br>
-        <input type="text" id="text" value="<?php echo $data->getText() ?>"><br>
+        <input type="text" id="text" name="text" value="<?php echo $data->getText() ?>"><br>
     </div>
 
 
