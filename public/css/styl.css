@@ -5,3 +5,14 @@
 .navbar-brand img {
     width: 50px;
 }
+
+.error {
+    color: red;
+    padding: 5px;
+}
+
+#submit-info {
+    display: none;
+    padding: 5px;
+    color: red;
+}

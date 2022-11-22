@@ -11,18 +11,28 @@
         <input type="hidden" name="id" value="<?php echo $data->getId() ?>"> <!-- skryty parameter, len hodi do $_POST['id'] idecko postu na editnutie -->
     <?php } ?>
 
-    <label>
-        Title:
-        <!-- vo value su veci ktore budu v tom input okienku uz zo zaciatku vpisane -->
-        <input type="text" name="title" value="<?php echo $data->getTitle() ?>">
-    </label>
-    <label>
-        Text:
-        <!-- vo value su veci ktore budu v tom input okienku uz zo zaciatku vpisane -->
-        <input type="text" name="text" value="<?php echo $data->getText() ?>">
-    </label>
 
-    <input type="file" name="img">
+    <div>
+        <label for="title">Title:</label><br>
+        <input type="text" id="title" value="<?php echo $data->getTitle() ?>"><br>
+    </div>
 
-    <input type="submit" value="Odoslat">
+    <div>
+        <label for="text">Text:</label><br>
+        <input type="text" id="text" value="<?php echo $data->getText() ?>"><br>
+    </div>
+
+    <div>
+        <label for="image">Image:</label><br>
+        <input type="file" name="img" id="img">
+    </div>
+
+    <br>
+    <div>
+        <input type="submit" value="Odoslať" id="submit">
+    </div>
+
+    <div id="submit-info">
+        Formulár obsahuje chyby a nie je možné ho odoslať.
+    </div>
 </form>

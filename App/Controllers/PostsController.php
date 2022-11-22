@@ -16,6 +16,7 @@ class PostsController extends AControllerBase
      * @param $action
      * @return bool
      */
+
 //    public function authorize($action)
 //    {
 //        switch ($action) {
