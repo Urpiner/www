@@ -4,20 +4,36 @@ namespace App\Models;
 
 use App\Core\Model;
 
-class Post extends Model
+class Image extends Model
 {
-    //musia byt protected aby isiel framework
-    protected $id;
-    protected $text;
+    protected $post_content_elements_id;
     protected $img;
-    protected $title;
+    protected $text;
 
-//    public function getParagraphs() {
-//        return Paragraph::getAll('posts_id = ?', [$this->getId()]);
-//    }
 
-    public function getPostContentElements() {
-        return Post_content_element::getAll('posts_id = ?', [$this->getId()], 'priority');
+    /**
+     * Return default primary key column name
+     * @return string
+     */
+    public static function getPkColumnName() : string
+    {
+        return 'post_content_elements_id';
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPostContentElementsId()
+    {
+        return $this->post_content_elements_id;
+    }
+
+    /**
+     * @param mixed $post_content_elements_id
+     */
+    public function setPostContentElementsId($post_content_elements_id): void
+    {
+        $this->post_content_elements_id = $post_content_elements_id;
     }
 
     /**
@@ -67,22 +83,4 @@ class Post extends Model
     {
         $this->img = $img;
     }
-
-    /**
-     * @return mixed
-     */
-    public function getTitle()
-    {
-        return $this->title;
-    }
-
-    /**
-     * @param mixed $title
-     */
-    public function setTitle($title): void
-    {
-        $this->title = $title;
-    }
-
-
 }

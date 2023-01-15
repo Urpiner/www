@@ -6,10 +6,37 @@ use App\Core\Model;
 
 class Paragraph extends Model
 {
-    protected $id;
-    protected $posts_id;
+    protected $post_content_elements_id;
     protected $text;
     protected $title;
+
+
+
+    /**
+     * Return default primary key column name
+     * @return string
+     */
+    public static function getPkColumnName() : string
+    {
+        return 'post_content_elements_id';
+    }
+
+
+    /**
+     * @return mixed
+     */
+    public function getPostContentElementsId()
+    {
+        return $this->post_content_elements_id;
+    }
+
+    /**
+     * @param mixed $post_content_elements_id
+     */
+    public function setPostContentElementsId($post_content_elements_id): void
+    {
+        $this->post_content_elements_id = $post_content_elements_id;
+    }
 
     /**
      * @return mixed
@@ -25,22 +52,6 @@ class Paragraph extends Model
     public function setId($id): void
     {
         $this->id = $id;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getPostsId()
-    {
-        return $this->posts_id;
-    }
-
-    /**
-     * @param mixed $posts_id
-     */
-    public function setPostsId($posts_id): void
-    {
-        $this->posts_id = $posts_id;
     }
 
     /**
