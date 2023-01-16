@@ -6,7 +6,7 @@
     // $data je premenna ktora vznikne zavolanim $this->html($posts); v metode edit() alebo create() v triede PostsController
     // bude v nej to co sa posiela parametrom, v tomto pripade to bude Post
 
-    //ak je id uz nastavene, tak chceme editovat post, inac sa bude vytvarat novy post - mohol na to mesko spravit 2 viewy, ale co uz, obidve logiky su v create.form.view.php
+    //ak je id uz nastavene, tak chceme editovat post, inac sa bude vytvarat novy post - mohlo sa na to spravit 2 viewy, ale co uz, obidve logiky su v create.form.view.php
     if ($data->getId()) { //vrati true ak je nenullove ?>
         <input type="hidden" name="id" value="<?php echo $data->getId() ?>"> <!-- skryty parameter, len hodi do $_POST['id'] idecko postu na editnutie -->
     <?php } ?>
