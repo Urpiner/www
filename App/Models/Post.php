@@ -15,6 +15,9 @@ class Post extends Model
 //    public function getParagraphs() {
 //        return Paragraph::getAll('posts_id = ?', [$this->getId()]);
 //    }
+    public function getPostComments() {
+        return Post_comment::getAll('posts_id = ?', [$this->getId()]);
+    }
 
     public function getPostContentElements() {
         return Post_content_element::getAll('posts_id = ?', [$this->getId()], 'priority');

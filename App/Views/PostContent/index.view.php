@@ -105,3 +105,10 @@
         </div>
     </div>
 <?php } ?>
+
+<div class="row py-3">
+    <div class="col-lg-12">
+        <a class="btn btn-primary" href="?c=postComments&post_id=<?php echo $data->getId() ?>">Diskusia k článku →</a>
+    </div>
+</div>
+
