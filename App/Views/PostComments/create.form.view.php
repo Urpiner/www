@@ -12,8 +12,8 @@
 
 
     <div>
-        <label for="username">Username:</label><br>
-        <input type="text" id="username" name="username" value="<?php echo $data->getUsername() ?>"><br>
+        <label for="title">Username:</label><br>
+        <input type="text" id="title" name="username" value="<?php echo $data->getUsername() ?>"><br>
     </div>
 
     <div>

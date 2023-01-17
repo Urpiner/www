@@ -9,25 +9,6 @@
     </div>
 </header>
 
-<?php ///** @var \App\Models\Paragraph $paragraph */ ?>
-<?php //foreach ($data->getParagraphs() as $paragraph) { ?>
-<!--    <div class="container">-->
-<!--        <div class="text-center my-5">-->
-<!--            <h2 class="fw-bolder">--><?php //echo $paragraph->getTitle() ?><!--</h2>-->
-<!--            <p>--><?php //echo $paragraph->getText() ?><!--</p>-->
-<!--        </div>-->
-<!--    </div>-->
-<!--    --><?php //if ($auth->isLogged()) { ?>
-<!--        <div class="row py-3">-->
-<!--            <div class="col-lg-12">-->
-<!--                <a class="btn btn-warning" href="?c=postContent&a=editParagraph&id=--><?php //echo $paragraph->getId() ?><!--">Uprav paragraf →</a>-->
-<!--                <a class="btn btn-danger" href="?c=postContent&a=deleteParagraph&id=--><?php //echo $paragraph->getId() ?><!--">Zmaz paragraf →</a>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--    --><?php //} ?>
-<?php //} ?>
-
-
 
 
 <?php $postContentElements = $data->getPostContentElements()?>
@@ -40,7 +21,7 @@
         <?php $paragraph = $paragraphArray[0] ?>
         <div class="container">
             <div class="text-center my-5">
-                <h2 class="fw-bolder"><?php echo $paragraph->getTitle() ?>priority=<?php echo $postContentElement->getPriority() ?></h2>
+                <h2 class="fw-bolder"><?php echo $paragraph->getTitle() ?></h2>
                 <p><?php echo $paragraph->getText() ?></p>
             </div>
         </div>
@@ -57,11 +38,11 @@
 <!--        --><?php //$image = \App\Models\Image::getOne($postContentElement->getId()) ?>
         <?php $imageArray = \App\Models\Image::getAll('post_content_elements_id = ?', [$postContentElement->getId()]) ?>
         <?php $image = $imageArray[0] ?>
-        <div class="container">
-            <div class="clanok">
+        <div class="container d-flex justify-content-center">
+            <div id="PostContentImg" class="clanok">
                 <img src="../../../public/images/<?php echo $image->getImg() ?>" alt="..." />
                 <div class="clanok-telo">
-                    <p><?php echo $image->getText() ?>priority=<?php echo $postContentElement->getPriority()?></p>
+                    <p><?php echo $image->getText() ?></p>
                 </div>
             </div>
         </div>
