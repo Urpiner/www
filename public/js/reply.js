@@ -13,8 +13,8 @@ class Reply {
                 }
 
                 //vlozenie formulara na pridanie reply
-                html += "<div>" + "<input id=\"replyText-" + postCommentId + "\" type=\"text\">" + "</div>";
                 html += "<div>" + "<input id=\"replyUsername-" + postCommentId + "\" type=\"text\">" + "</div>";
+                html += "<div>" + "<input id=\"replyText-" + postCommentId + "\" type=\"text\">" + "</div>";
                 html += "<div>" + "<button id=\"btn-send-" + postCommentId + "\">" + "Odoslat reply" + "</button>" + "</div>";
 
                 document.getElementById(postCommentId).innerHTML = html;

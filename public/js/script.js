@@ -6,15 +6,28 @@ class Reply {
             .then(data => {
                 let html = "";
 
+                // <li class="reply">
+                //    <div class="post-comment">
+                //       <p class="meta">Dec 20, 2014 <a class="comment-username" href="#">JohnDoe</a> </p>
+                //       <p>
+                //          Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                //          Etiam a sapien odio, sit amet
+                //       </p>
+                //    </div>
+                // </li>
+
                 //vlozenie vsetkych replies
                 for (let reply of data) {
-                    html += "<div>" + reply.text + "</div>";
+                    html += "<li class=\"reply\">" + "<div class=\"post-comment\">";
+                    html += "<p class=\"meta\">" +  "<a class=\"comment-username\" href=\"#\">" + reply.username + "</a>" + " " + reply.date + "</p>";
+                    html += "<p>" + reply.text + "</p>";
+                    html += "</div>" + "</li>";
                 }
 
                 //vlozenie formulara na pridanie reply
-                html += "<div>" + "<input id=\"replyText-" + postCommentId + "\" type=\"text\">" + "</div>";
-                html += "<div>" + "<input id=\"replyUsername-" + postCommentId + "\" type=\"text\">" + "</div>";
-                html += "<div>" + "<button id=\"btn-send-" + postCommentId + "\">" + "Odoslat reply" + "</button>" + "</div>";
+                html += "<div class=\"form-group\">" + "<label for=\"replyText-" + postCommentId + "\">Text:</label>" + "<input class=\"form-control\" id=\"replyText-" + postCommentId + "\" type=\"text\">";
+                html += "<label for=\"replyUsername-" + postCommentId + "\">Meno:</label>" + "<input class=\"form-control\" id=\"replyUsername-" + postCommentId + "\" type=\"text\">";
+                html += "<button class=\"btn btn-success\" id=\"btn-send-" + postCommentId + "\">" + "Odoslat reply" + "</button>" + "</div>";
 
                 document.getElementById(postCommentId).innerHTML = html;
 
@@ -48,6 +61,10 @@ class Reply {
                     alert("Zadane data obsahuju chyby - SERVER");
                 }
             });
+
+        var reply = new Reply();
+        reply.getAllReplies(postCommentId);
+
     }
 
 }

@@ -9,8 +9,8 @@ class Post_comment extends Model
     protected $id;
     protected $posts_id;
     protected $post_comments_id;
-    protected $date;
-    protected $username;
+    public $date;
+    public $username;
     public $text;
 
     public function getAllReplies() {
