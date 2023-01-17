@@ -44,7 +44,7 @@ class PostContentController extends AControllerBase
 
 
         //zvys prioritu tym co su nizsie na stranke (aby neboli medzery npr 0 1 2 4 5, ale aby sli postupne 0 1 2 3 4)
-        $postContentElementsWithLowerPriority = \App\Models\Post_content_element::getAll('priority > ?', [$postContentElementToDelete->getPriority()]);
+        $postContentElementsWithLowerPriority = \App\Models\Post_content_element::getAll('priority > ? AND posts_id = ?', [$postContentElementToDelete->getPriority(), $postContentElementToDelete->getPostsId()]);
         foreach ($postContentElementsWithLowerPriority as $postContentElement) {
             $postContentElement->setPriority($postContentElement->getPriority() - 1);
             $postContentElement->save();
@@ -139,7 +139,7 @@ class PostContentController extends AControllerBase
         $post_id = $postContentElementToDelete->getPostsId(); //kvoli redirectu
 
         //zvys prioritu tym co su nizsie na stranke (aby neboli medzery npr 0 1 2 4 5, ale aby sli postupne 0 1 2 3 4)
-        $postContentElementsWithLowerPriority = \App\Models\Post_content_element::getAll('priority > ?', [$postContentElementToDelete->getPriority()]);
+        $postContentElementsWithLowerPriority = \App\Models\Post_content_element::getAll('priority > ? AND posts_id = ?', [$postContentElementToDelete->getPriority(), $postContentElementToDelete->getPostsId()]);
         foreach ($postContentElementsWithLowerPriority as $postContentElement) {
             $postContentElement->setPriority($postContentElement->getPriority() - 1);
             $postContentElement->save();
@@ -247,7 +247,7 @@ class PostContentController extends AControllerBase
         }
 
         //najdi element s o 1 vyssou prioritou, zniz mu prioritu a sebe zvys prioritu
-        $postContentElementHigher = Post_content_element::getAll('priority = ?', [$postContentElement->getPriority() - 1]);
+        $postContentElementHigher = Post_content_element::getAll('priority = ? AND posts_id = ?', [($postContentElement->getPriority() - 1), $postContentElement->getPostsId()]);
         if (count($postContentElementHigher) != 1) { //getAll musi vratit iba 1 zaznam (stlpec priority je unikatny)
             //presmerovanie spat na vnutro konkretneho postu
             $post_id = $postContentElement->getPostsId();
@@ -279,7 +279,7 @@ class PostContentController extends AControllerBase
         }
 
         //najdi element s o 1 nizsou prioritou, zvys mu prioritu a sebe zniz prioritu
-        $postContentElementLower = Post_content_element::getAll('priority = ?', [$postContentElement->getPriority() + 1]);
+        $postContentElementLower = Post_content_element::getAll('priority = ? AND posts_id = ?', [($postContentElement->getPriority() + 1), $postContentElement->getPostsId()]);
         if (count($postContentElementLower) != 1) { //getAll musi vratit iba 1 zaznam (stlpec priority je unikatny)
             //presmerovanie spat na vnutro konkretneho postu
             $post_id = $postContentElement->getPostsId();

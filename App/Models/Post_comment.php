@@ -8,9 +8,32 @@ class Post_comment extends Model
 {
     protected $id;
     protected $posts_id;
+    protected $post_comments_id;
     protected $date;
     protected $username;
-    protected $text;
+    public $text;
+
+    public function getAllReplies() {
+        return Post_comment::getAll('post_comments_id = ?', [$this->getId()]);
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPostCommentsId()
+    {
+        return $this->post_comments_id;
+    }
+
+    /**
+     * @param mixed $post_comments_id
+     */
+    public function setPostCommentsId($post_comments_id): void
+    {
+        $this->post_comments_id = $post_comments_id;
+    }
+
+
 
     /**
      * @return mixed

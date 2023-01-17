@@ -13,8 +13,6 @@ class PostCommentsController extends AControllerBase {
     {
         switch ($action) {
             case "deleteComment":
-            case "storeComment":
-            case "createComment":
                 return $this->app->getAuth()->isLogged();
         }
         return true;
@@ -34,6 +32,11 @@ class PostCommentsController extends AControllerBase {
         $postComment = Post_comment::getOne($id);
 
         $post_id = $postComment->getPostsId(); //kvoli redirectu
+
+        $replies = $postComment->getAllReplies();
+        foreach ($replies as $reply) {
+            $reply->delete();
+        }
 
         //zalezi na poradi deletov
         if ($postComment) { //vrati true ak je nenullova hodnota
@@ -97,5 +100,33 @@ class PostCommentsController extends AControllerBase {
 //
 //        return $this->html($paragraphToEdit, viewName: 'create.form');
 //    }
+
+    public function getAllReplies() {
+        $id = $this->request()->getValue('id');
+        $postComment = Post_comment::getOne($id);
+
+        $replies = $postComment->getAllReplies();
+        return $this->json($replies);
+    }
+
+    public function addReply() {
+        $text = $this->request()->getValue("text");
+        $username = $this->request()->getValue("username");
+        $post_comments_id = $this->request()->getValue("post_comments_id"); //idecko parenta
+
+        if (strlen($text) == 0 || strlen($text) == 0) {
+            return $this->json("error");
+        }
+
+        $reply = new Post_comment();
+        $reply->setDate(date("Y-m-d h:i:sa"));
+        $reply->setUsername($username);
+        $reply->setText($text);
+        $reply->setPostCommentsId($post_comments_id);
+        $parentComment = Post_comment::getOne($post_comments_id);
+        $reply->setPostsId($parentComment->getPostsId());
+
+        $reply->save();
+    }
 
 }

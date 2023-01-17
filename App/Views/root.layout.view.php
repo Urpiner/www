@@ -15,7 +15,9 @@
             integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
             crossorigin="anonymous"></script>
     <link rel="stylesheet" href="public/css/styl.css">
+
     <script src="public/js/script.js"></script>
+
 
     <link rel="stylesheet" href="../../public/css/clanky.css">
     <!-- Latest compiled and minified CSS -->

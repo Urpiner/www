@@ -14,18 +14,32 @@
 <?php $postComments = $data->getPostComments()?>
 <?php /** @var \App\Models\Post_comment $postComment */ ?>
 <?php foreach ($postComments as $postComment) { ?>
-    <div class="container">
-        <div class="text-center my-5">
-            <h2 class="fw-bolder"><?php echo $postComment->getText() ?></h2>
-            <p><?php echo $postComment->getUsername() ?></p>
-            <p><?php echo $postComment->getDate() ?></p>
+
+    <?php if (!$postComment->getPostCommentsId()) { //lebo vtedy je koment.. ak ma toto nastavene, tak je to reply ?>
+        <div class="container">
+            <div class="text-center my-5">
+                <h2 class="fw-bolder"><?php echo $postComment->getText() ?></h2>
+                <p><?php echo $postComment->getUsername() ?></p>
+                <p><?php echo $postComment->getDate() ?></p>
+            </div>
         </div>
-    </div>
-    <?php if ($auth->isLogged()) { ?>
+        <?php if ($auth->isLogged()) { ?>
+            <div class="row py-3">
+                <div class="col-lg-12">
+                    <a class="btn btn-danger" href="?c=postComments&a=deleteComment&id=<?php echo $postComment->getId() ?>">Zmaz koment →</a>
+                </div>
+            </div>
+        <?php } ?>
+
+        <!--    button spusta zobrazenie replies (javascriptom)-->
         <div class="row py-3">
             <div class="col-lg-12">
-                <a class="btn btn-danger" href="?c=postComments&a=deleteComment&id=<?php echo $postComment->getId() ?>">Zmaz koment →</a>
+                <button id="btn-replies" value="<?php echo $postComment->getId() ?>">Zobraz odpovede</button>
             </div>
+        </div>
+
+        <!--    tu su replies (javascriptom)-->
+        <div id="<?php echo $postComment->getId() ?>">
         </div>
     <?php } ?>
 <?php } ?>
